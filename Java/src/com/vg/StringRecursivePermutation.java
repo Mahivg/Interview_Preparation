@@ -1,3 +1,5 @@
+package com.vg;
+
 import java.util.*;
 
 public class StringRecursivePermutation {
@@ -11,7 +13,7 @@ public class StringRecursivePermutation {
         StringRecursivePermutation sp = new StringRecursivePermutation();
 //        sp.powerSet(str,index,curr);
 //        sp.permute(str,0, str.length()-1);
-//          sp.allSubsetAddOneByOne("abc","",0);
+          sp.allSubsetAddOneByOne("abc","",0);
 //        List<String> r = sp.letterCombinations("234");
 //        System.out.println(r);
 
@@ -97,7 +99,6 @@ public class StringRecursivePermutation {
         String[] keys = new String[numbers.length];
 
         for(int l : numbers){
-
             String s = strList[l-1];
             keys[index] = s;
             index++;
@@ -189,7 +190,6 @@ public class StringRecursivePermutation {
 
             int count = 1;
             if(a != -1) {
-
                 for (int j = i + 1; j < arr.length; j++) {
 
                     if (a == arr[j]) {

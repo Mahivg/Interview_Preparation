@@ -1,3 +1,5 @@
+package com.vg.competative;
+
 public class WaterTrappingProblem {
 
     public static void main(String[] args){

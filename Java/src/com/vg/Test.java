@@ -1,5 +1,8 @@
-import inheritance.Circle;
-import inheritance.Shape;
+package com.vg;
+
+
+import com.vg.inheritance.Circle;
+import com.vg.inheritance.Shape;
 
 public class Test {
 

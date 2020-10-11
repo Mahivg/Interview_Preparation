@@ -1,3 +1,5 @@
+package com.vg.competative;
+
 public class JosephusProblem {
 
     public static void main(String args[]){

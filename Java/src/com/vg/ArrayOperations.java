@@ -52,6 +52,11 @@ public class ArrayOperations {
         int[] combinedArray = arOps.combineTwoArray(array1,array2);
         System.out.println(String.format("Result of combining array %s and %s is %s", Arrays.toString(array1), Arrays.toString(array2), Arrays.toString(combinedArray)));
 
+        int[] L = {1,9,13, 21};
+        int[] R = {15, 12,20,30};
+        // Reference https://www.geeksforgeeks.org/maximum-occurred-integer-n-ranges/
+        arOps.findMaximumOccurredInteger(n,L,R);
+
     }
 
     private int[] combineTwoArray(int[] array1, int[] array2) {
@@ -177,5 +182,29 @@ public class ArrayOperations {
         }
         System.out.println("Largest : " + largest);
         System.out.println("Smallest : " + smallest);
+    }
+    private void findMaximumOccurredInteger(int n, int[] l, int[] r) {
+
+        int MAX = 1000;
+
+        int[] arr = new int[MAX];
+
+        for(int i = 0; i<n; i++){
+            arr[l[i]] +=1;
+            arr[r[i] + 1] -=1;
+        }
+        System.out.println(Arrays.toString(arr));
+        int mSum = arr[0];
+        int ind = 0;
+        for(int i = 1; i<MAX; i++){
+            arr[i] += arr[i-1];
+
+            if(mSum < arr[i]){
+                mSum = arr[i];
+                ind = i;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+        System.out.println("Index : " + ind);
     }
 }

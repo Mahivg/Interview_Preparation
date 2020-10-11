@@ -1,3 +1,5 @@
+package com.vg;
+
 import java.util.Arrays;
 
 public class RearrangeArray {

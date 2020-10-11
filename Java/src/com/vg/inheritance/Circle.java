@@ -1,4 +1,4 @@
-package inheritance;
+package com.vg.inheritance;
 
 public class Circle extends Shape{
     public static String NAME = "CIRCLE";

@@ -1,3 +1,5 @@
+package com.vg;
+
 public class ArraySortMaxAndSecondMax {
 
     public static void main(String[] args){
