@@ -1,4 +1,0 @@
-How to Compare Arrays in Java – Equals vs deepEquals Example
-    https://javarevisited.blogspot.com/2012/12/how-to-compare-arrays-in-java-equals-deepequals-primitive-object.html
-
-
