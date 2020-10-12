@@ -8,7 +8,6 @@ public class SortingAlgorithms {
         SortingAlgorithms sortAlgms = new SortingAlgorithms();
 
         int[] inputArray = {4,-1,6,8,0,5,-3};
-
         System.out.println("*** Array before sorting ***");
         System.out.println(Arrays.toString(inputArray));
 //        Quick Sort Example
@@ -35,23 +34,24 @@ public class SortingAlgorithms {
                 i++;
                 if( inputArray[i] != inputArray[j]) {
 //                    System.out.println("Swapping " + inputArray[i] + " and " + inputArray[j]);
-                    int temp = inputArray[j];
-                    inputArray[j] = inputArray[i];
-                    inputArray[i] = temp;
+                    swap(inputArray, j, i);
                 }
             }
         }
-        int swap = inputArray[i+1];
-        inputArray[i+1] = inputArray[end];
-        inputArray[end] = swap;
-
+        swap(inputArray, i+1, end);
 //        System.out.println("*** Pivot : " + pivot + " ***");
 //        System.out.println("*** Array current state ***");
         System.out.println(Arrays.toString(inputArray));
 
         return i+1;
     }
+    private void swap(int[] arr, int pos1, int pos2) {
+        int temp = arr[pos1];
+        arr[pos1] = arr[pos2];
+        arr[pos2] = temp;
+    }
 }
+
 
 /**
  * Quick Sort
