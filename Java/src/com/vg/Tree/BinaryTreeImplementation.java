@@ -59,9 +59,11 @@ public class BinaryTreeImplementation<T> {
     public void preOrderWithoutRecursion(TreeNode<T> node) {
         Stack<TreeNode> nodes = new Stack<>();
         nodes.push(node);
+        int size = 0;
 
         while(!nodes.isEmpty()) {
             TreeNode current = nodes.pop();
+            size++;
 
             System.out.println("Node : " + current.getData());
 //            Since it is a stack pushing right first, then left. while popping left will come out first
@@ -72,6 +74,7 @@ public class BinaryTreeImplementation<T> {
                 nodes.push(current.getLeft());
             }
         }
+        System.out.println("Size : " + size);
     }
 
     public void inOrderTraversal() {

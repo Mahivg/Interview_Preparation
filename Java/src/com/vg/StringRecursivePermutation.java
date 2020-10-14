@@ -13,8 +13,8 @@ public class StringRecursivePermutation {
         StringRecursivePermutation sp = new StringRecursivePermutation();
 //        sp.powerSet(str,index,curr);
 //        sp.permute(str,0, str.length()-1);
-          sp.allSubsetAddOneByOne("abc","",0);
-//        List<String> r = sp.letterCombinations("234");
+//          sp.allSubsetAddOneByOne("abc","",0);
+        List<String> r = sp.letterCombinations("234");
 //        System.out.println(r);
 
         int[] k = {10, 11, -1, 20, 22, -1};
@@ -128,6 +128,7 @@ public class StringRecursivePermutation {
     }
 
     public List<String> letterCombinations(String digits) {
+
         HashMap<Character, String> map = new HashMap<>();
         map.put('2', "abc");
         map.put('3', "def");
@@ -159,7 +160,7 @@ public class StringRecursivePermutation {
 
             l.clear();
             l.addAll(temp);
-//            System.out.println("Added Temp");
+            System.out.println(l);
         }
 
         return l;

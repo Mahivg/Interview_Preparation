@@ -1,6 +1,8 @@
 package com.vg;
 
 import com.vg.Tree.BinaryTreeImplementation;
+import com.vg.inheritance.Circle;
+import com.vg.inheritance.Shape;
 import com.vg.model.TreeNode;
 
 import java.util.ArrayList;
@@ -10,8 +12,11 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	// write your code here for testing
 //        Default file
+
+        Shape shape = new Circle();
+        shape.draw();
 
         List<Integer> myIntegerList = Arrays.asList(1,2,3,4,5,6);
         myIntegerList.stream().forEach(System.out::println);

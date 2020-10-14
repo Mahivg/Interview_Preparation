@@ -1,4 +1,4 @@
-package com.vg.competative;
+package com.vg.competitive;
 
 public class WaterTrappingProblem {
 

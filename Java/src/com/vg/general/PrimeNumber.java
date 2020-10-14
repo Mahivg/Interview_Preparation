@@ -29,7 +29,7 @@ public class PrimeNumber {
         for(int i = 3; i<sqrt; i+= 2) {
             if(number % i == 0) {
                 isPrime = false;
-
+                break;
             }
         }
         return isPrime;

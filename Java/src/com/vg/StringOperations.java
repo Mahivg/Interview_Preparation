@@ -127,7 +127,6 @@ public class StringOperations {
     private char findFirstNonRepeatingCharacter(String nonRepeatedString) {
 
         LinkedHashMap<Character, Integer> characterHashMap = new LinkedHashMap<>(nonRepeatedString.length());
-
         for(char c : nonRepeatedString.toCharArray()) {
             if(characterHashMap.containsKey(c)) {
                 characterHashMap.put(c, characterHashMap.get(c) + 1);
