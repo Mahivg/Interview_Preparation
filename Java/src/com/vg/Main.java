@@ -15,6 +15,8 @@ public class Main {
 	// write your code here for testing
 //        Default file
 
+        System.out.println(10 * 20 + " java");
+
         Shape shape = new Circle();
         shape.draw();
 

@@ -14,7 +14,8 @@ public class StringRecursivePermutation {
 //        sp.powerSet(str,index,curr);
 //        sp.permute(str,0, str.length()-1);
 //          sp.allSubsetAddOneByOne("abc","",0);
-        List<String> r = sp.letterCombinations("234");
+//        Finding how many combination of words we can do with the given number
+//        List<String> r = sp.letterCombinations("234");
 //        System.out.println(r);
 
         int[] k = {10, 11, -1, 20, 22, -1};
@@ -153,11 +154,10 @@ public class StringRecursivePermutation {
             for (int j = 0; j < l.size(); j++) {
                 for (int p = 0; p < option.length(); p++) {
                     String s = new StringBuilder(l.get(j)).append(option.charAt(p)).toString();
-//                    System.out.println("Adding "+ s);
+                    System.out.println("Adding "+ s);
                     temp.add(s);
                 }
             }
-
             l.clear();
             l.addAll(temp);
             System.out.println(l);

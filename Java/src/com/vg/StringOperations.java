@@ -24,6 +24,10 @@ public class StringOperations {
         String revStrInput = "Magesh";
         // Prepare for how to reverse words using split and join (https://www.baeldung.com/java-join-and-split)
         String revStr = strOps.reverseString(revStrInput);
+        String revWords = "i.like.java.very.much";
+        String revWordsRes = strOps.reverseWords(revWords);
+        System.out.println("Words before reverse : " + revWords);
+        System.out.println("Reversed words : " + revWordsRes);
         // Reusing the same method to find whether the string is Palindrome or Not
         System.out.println(String.format("The String %s === %s, is %s ", revStrInput, revStr, (revStrInput.equalsIgnoreCase(revStr) ? "Palindrome" : "Not a palindrome")));
         System.out.println(String.format("The Given String %s's reverse is %s " , revStrInput, revStr));
@@ -56,7 +60,7 @@ public class StringOperations {
     }
 
     private void printCharacterCountInString(String inputStr) {
-        System.out.println("*** Printing Character Count ***");
+        System.out.println("*** Printing All Character Count ***");
 
         Map<Character, Integer> inputMap = new HashMap<>(inputStr.length());
         for(char c : inputStr.toCharArray()) {
@@ -154,8 +158,18 @@ public class StringOperations {
             }
         }
         return sb.toString().isEmpty();
+    }
 
-
+    private String reverseWords(String revWords) {
+        String[] words = revWords.split("\\.");
+        StringBuilder sb = new StringBuilder();
+        for (int i = words.length-1; i >=0 ; i--) {
+            sb.append(words[i]);
+            if(i!= 0) {
+                sb.append(".");
+            }
+        }
+        return sb.toString();
     }
 
 }

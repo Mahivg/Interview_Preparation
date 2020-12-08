@@ -1,5 +1,6 @@
 package com.vg.Tree;
 
+import com.sun.source.tree.Tree;
 import com.vg.model.TreeNode;
 
 public class LeastCommonAncestor {
@@ -26,8 +27,8 @@ public class LeastCommonAncestor {
          *
          */
 
-        int nodeValue1 = 2;
-        int nodeValue2 = 6;
+        int nodeValue1 = 8;
+        int nodeValue2 = 11;
 
         TreeNode<Integer> parent = findLeastCommonAncestor(bst.getRoot(), nodeValue1, nodeValue2);
 
@@ -36,16 +37,28 @@ public class LeastCommonAncestor {
 
     private static TreeNode<Integer> findLeastCommonAncestor(TreeNode<Integer> root, int nodeValue1, int nodeValue2) {
 
+        /**
+         *      7
+         *    / \
+         *   4     10
+         *  / \   /  \
+         * 2   6 8   11
+         *
+         */
+        TreeNode<Integer> lca = root;
+
         if(root == null || ( root.getRight() == null && root.getLeft() == null) ) {
             return null;
         }
         if(root.getData() > nodeValue1 && root.getData() > nodeValue2) {
+            lca = root.getLeft();
             findLeastCommonAncestor(root.getLeft(), nodeValue1, nodeValue2);
         }
         if(root.getData() < nodeValue1 && root.getData() < nodeValue2) {
+            lca = root.getRight();
             findLeastCommonAncestor(root.getRight(), nodeValue1, nodeValue2);
         }
-        return root;
+        return lca;
 
     }
 }

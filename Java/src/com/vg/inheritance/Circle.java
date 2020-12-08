@@ -15,6 +15,11 @@ public class Circle extends Shape{
         System.out.println(" drawShape() : Circle ");
     }
 
+    public void sketch() {
+
+        System.out.println(" sketch(): Circle ");
+    }
+
 
 
 }

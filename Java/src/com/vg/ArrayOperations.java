@@ -1,8 +1,6 @@
 package com.vg;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ArrayOperations {
     public static void main(String args[]) {
@@ -13,7 +11,7 @@ public class ArrayOperations {
         int totalSum = Arrays.stream(sumArray).sum();
         int expectedSum = (n * (n + 1))/2;
 //        System.out.println("The sum is " + expectedSum);
-        // To find only one missing number
+//        To find only one missing number
         System.out.println("*** Missing element in ordered array ***");
         System.out.println(String.format("Missing element in given array %s is %s ", Arrays.toString(sumArray), expectedSum - totalSum ));
 
@@ -29,7 +27,7 @@ public class ArrayOperations {
         int pairSum = 7;
         arOps.findPairsForSum(pairArray, pairSum);
 
-        System.out.println("*** Rotating array given k times ***");
+        System.out.println("*** Rotating given array k times ***");
         int[] rotateInputArray = {1,2,3,4,5,6,7,8};
         int k = 3;
         System.out.println("Array before rotating : " + Arrays.toString(rotateInputArray));
@@ -55,7 +53,17 @@ public class ArrayOperations {
         int[] L = {1,9,13, 21};
         int[] R = {15, 12,20,30};
         // Reference https://www.geeksforgeeks.org/maximum-occurred-integer-n-ranges/
-        arOps.findMaximumOccurredInteger(n,L,R);
+        arOps.findMaximumOccurredInteger(L.length,L,R);
+
+        int[] leadsInput = { 16, 17, 4, 3, 5, 2 };
+//        an element is leader if the element is greater than all the element to the right. Right most element always a leader.
+        arOps.findLeadersInArray(leadsInput, leadsInput.length);
+
+        System.out.println("*** Finding Equilibrium Point ***");
+        int[] equilInput = {1,3,5,2,2};
+//        Index at which right and left sum of elements are equal
+        int equilPoint = arOps.findEquilibriumPoint(equilInput);
+        System.out.println("Equilibrium point : " + equilInput);
 
     }
 
@@ -185,7 +193,7 @@ public class ArrayOperations {
     }
     private void findMaximumOccurredInteger(int n, int[] l, int[] r) {
 
-        int MAX = 1000;
+        int MAX = 35;
 
         int[] arr = new int[MAX];
 
@@ -206,5 +214,55 @@ public class ArrayOperations {
         }
         System.out.println(Arrays.toString(arr));
         System.out.println("Index : " + ind);
+    }
+
+
+
+    private void findLeadersInArray(int[] leadsInput, int length) {
+
+//        Iterative Approach
+        System.out.println("*** Leaders in array ***");
+//        for(int i = 0; i <length; i++) {
+//            int j;
+//            for(j = i + 1; j<length; j++) {
+//                if(leadsInput[i] < leadsInput[j]) {
+//                    break;
+//                }
+//            }
+//            if( j == length) {
+//                System.out.print(leadsInput[i] + " ");
+//            }
+//        }
+
+        int leader = leadsInput[length - 1];
+        System.out.print(leader + " ");
+        for (int i = length-2; i>=0; i--) {
+            if(leader <= leadsInput[i]) {
+                leader = leadsInput[i];
+                System.out.print(leadsInput[i] + " ");
+            }
+        }
+    }
+
+    private int findEquilibriumPoint(int[] equilInput) {
+        int n = equilInput.length;
+
+        if(n == 1) {
+            return 1;
+        }else if(n == 2) {
+            return -1;
+        }
+        int sum = 0;
+        int leftSum = 0;
+
+        sum = Arrays.stream(equilInput).sum();
+        for(int i =0; i < n; i++) {
+            sum -= equilInput[i];
+            if(leftSum == sum) {
+                return i+1;
+            }
+            leftSum += equilInput[i];
+        }
+        return -1;
     }
 }

@@ -16,6 +16,15 @@ public class BSTOperations {
         bst1.getRight().setLeft(new TreeNode(16));
         bst1.getRight().setRight(new TreeNode(25));
 
+        /**
+         *      15
+         *    / \
+         *   10     20
+         *  / \   /  \
+         * 8   12 16   25
+         *
+         */
+
         System.out.println("*** Check Binary Tree is Binary Search Tree ***");
         boolean isBST = bstOps.checkBTisBST(bst1);
         System.out.println("Given BST is " + (isBST ? "Valid BST": "Not valid BST"));

@@ -33,14 +33,14 @@ public class SortingAlgorithms {
             if(inputArray[j] <= pivot) {
                 i++;
                 if( inputArray[i] != inputArray[j]) {
-//                    System.out.println("Swapping " + inputArray[i] + " and " + inputArray[j]);
+                    System.out.println("Swapping " + inputArray[i] + " and " + inputArray[j]);
                     swap(inputArray, j, i);
                 }
             }
         }
         swap(inputArray, i+1, end);
-//        System.out.println("*** Pivot : " + pivot + " ***");
-//        System.out.println("*** Array current state ***");
+        System.out.println("*** Pivot : " + pivot + " ***");
+        System.out.println("*** Array current state ***");
         System.out.println(Arrays.toString(inputArray));
 
         return i+1;
