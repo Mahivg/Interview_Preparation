@@ -45,7 +45,7 @@ public class NumberToWords {
         }
         if(number > 0) {
             if(number < 20) {
-                result += singleUnits[number%10];
+                result += singleUnits[number%singleUnits.length];
             }else {
                 result += additionsOfTen[number/10];
                 if(number % 10 > 0) {

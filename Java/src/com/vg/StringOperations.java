@@ -45,6 +45,16 @@ public class StringOperations {
         // Regular expression pattern to test input is only Digits
         String regex = "(.)*(\\d)(.)*";
 
+
+        String longPalindrome = "geeksskeeg";
+        System.out.println("** Finding Largest Palindrome Substring **");
+        strOps.findLargestPalindromeSubstring(longPalindrome);
+
+
+        System.out.println("** Checking Balances on Braces String **");
+        String checkBalanceString = "{})}";
+        strOps.checkBalanceOfTheString(checkBalanceString);
+
     }
 
     private void printFizzBuzz(int num) {
@@ -149,15 +159,34 @@ public class StringOperations {
 
     private boolean checkAnagramStrings(String first, String second) {
 
-        //Using String builder
-        StringBuilder sb = new StringBuilder(second);
-
-        for(char c : first.toCharArray()) {
-            if(sb.indexOf("" + c) != -1) {
-                sb.deleteCharAt(sb.indexOf("" + c));
-            }
+        long startTime = System.currentTimeMillis();
+        if(first.length() != second.length()) {
+            return false;
         }
-        return sb.toString().isEmpty();
+
+//        We can sort the both String as char array then try compare with each character in the same index. Using Arrays.sort()
+
+//        Taking Sum method (Best)
+        int count = 0;
+        for(int i = 0; i < first.length(); i++) {
+            count += first.charAt(i);
+        }
+        for(int j = 0; j < second.length(); j++) {
+            count -= first.charAt(j);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
+        return (count == 0);
+//        Using String builder
+//        StringBuilder sb = new StringBuilder(second);
+//        for(char c : first.toCharArray()) {
+//            if(sb.indexOf("" + c) != -1) {
+//                sb.deleteCharAt(sb.indexOf("" + c));
+//            }
+//        }
+//        long endTime = System.currentTimeMillis();
+//        System.out.println(endTime - startTime);
+//        return sb.toString().isEmpty();
     }
 
     private String reverseWords(String revWords) {
@@ -170,6 +199,101 @@ public class StringOperations {
             }
         }
         return sb.toString();
+    }
+
+
+
+    private void findLargestPalindromeSubstring(String str) {
+
+        int n = str.length();
+
+        if(n < 2) {
+            return;
+        }
+        if(n == 2) {
+            if(str.charAt(0) == str.charAt(1)) {
+                System.out.println("Given string is the largest palindrome string");
+            }
+        }
+        boolean[][] table = new boolean[n][n];
+
+//        Each character is palindrome to itself
+        for(int i = 0; i<n; i++) {
+            table[i][i] = true;
+        }
+        int start = 0;
+        int maxLength = 0;
+
+        for(int i = 0; i < n-1; i++) {
+            if(str.charAt(i) == str.charAt(i+1)) {
+                table[i][i+1] = true;
+                start = i;
+                maxLength = 2;
+            }
+        }
+
+        for(int k = 3; k <= n; k++) {
+            for(int i = 0; i < n-k+1; i++) {
+                int j = i + k -1;
+                if(table[i+1][j-1] && str.charAt(i) == str.charAt(j)) {
+                    table[i][j] = true;
+                    if(k > maxLength) {
+                        maxLength = k;
+                        start = i;
+                    }
+                }
+            }
+        }
+        System.out.println(str.substring(start, start + maxLength));
+    }
+
+    private void checkBalanceOfTheString(String checkBalanceString) {
+
+//        Using Stack,
+        Stack<Character> stack = new Stack<>();
+//        we can use ArrayDeque for better performance
+//        Deque<Character> stack = new ArrayDeque<>(checkBalanceString.length());
+        boolean balanced = false;
+        for(char c: checkBalanceString.toCharArray()) {
+            if(c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+                continue;
+            }
+            if(stack.isEmpty()) {
+                balanced = false;
+                break;
+            }
+            char check;
+            switch (c) {
+                case '}' :
+                    check = stack.pop();
+                    if(check != '{') {
+                        balanced = false;
+                        return;
+                    }
+                    break;
+                case ']' :
+                    check = stack.pop();
+                    if(check != '[') {
+                        balanced = false;
+                        return;
+                    }
+                    break;
+                case ')' :
+                    check = stack.pop();
+                    if(check != '(') {
+                        balanced = false;
+                        return;
+                    }
+                    break;
+
+            }
+        }
+        if(balanced) {
+            System.out.println("Given String is Balanced...");
+        }else {
+            System.out.println("Given String is Unbalanced...");
+        }
     }
 
 }

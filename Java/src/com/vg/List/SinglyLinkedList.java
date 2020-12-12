@@ -23,6 +23,19 @@ public class SinglyLinkedList {
         return tail;
     }
 
+    public static void printSinglyLinkedList(Node<String> headNode) {
+        StringBuffer sb = new StringBuffer();
+        Node current = headNode;
+        if(current != null) {
+            while (current != null) {
+                sb.append(current.data.toString()).append("-->");
+                current = current.next;
+            }
+            sb.delete(sb.length()-3, sb.length());
+        }
+        System.out.println(sb.toString());
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();

@@ -11,12 +11,17 @@ public class StringRecursivePermutation {
         String curr = "";
 
         StringRecursivePermutation sp = new StringRecursivePermutation();
-//        sp.powerSet(str,index,curr);
-//        sp.permute(str,0, str.length()-1);
-//          sp.allSubsetAddOneByOne("abc","",0);
+        System.out.println("===== Power Set =====");
+        sp.powerSet(str,index,curr);
+        System.out.println("===== Permutation =====");
+        sp.permute(str,0, str.length()-1);
+
+        System.out.println("===== Subsets of String =====");
+          sp.allSubsetAddOneByOne("abc","",0);
 //        Finding how many combination of words we can do with the given number
-//        List<String> r = sp.letterCombinations("234");
-//        System.out.println(r);
+        System.out.println("===== Finding Possible combination of phone number =====");
+        List<String> r = sp.letterCombinations("234");
+        System.out.println(r);
 
         int[] k = {10, 11, -1, 20, 22, -1};
 
@@ -25,7 +30,6 @@ public class StringRecursivePermutation {
     public void powerSet(String str, int index, String curr){
 
         int n = str.length();
-//        System.out.println("===== Power Set =====");
 //        System.out.println(" *** Str :  " + str + " ***");
 //        System.out.println(" *** index :  " + index + " ***");
 //        System.out.println(" *** curr :  " + curr + " ***");

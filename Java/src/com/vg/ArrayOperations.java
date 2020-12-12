@@ -20,6 +20,9 @@ public class ArrayOperations {
         int[] unSortedArray = {10, 3, 5 ,8, -1, 2, 9, 4};
         arOps.findLargestAndSmallest(unSortedArray);
 
+        System.out.println("*** Largest and Second Largest element in Array ***");
+        arOps.findSecondLargestNumber(unSortedArray);
+
 //        Find pairs of element which is equal to given sum
 //        Here for given array find unique pair of elements which give sum as 7
         System.out.println("*** Finding sum of pairs ***");
@@ -64,6 +67,13 @@ public class ArrayOperations {
 //        Index at which right and left sum of elements are equal
         int equilPoint = arOps.findEquilibriumPoint(equilInput);
         System.out.println("Equilibrium point : " + equilInput);
+
+        int[] minOpsArray = {1,2,3};
+//        Means To make array {3,3,3} how many operations needed
+//        We have to increase n-1 numbers at a time by 1
+//        https://www.geeksforgeeks.org/minimum-number-increment-operations-make-array-elements-equal/
+        System.out.println("*** Finding Minimun no of opeeration to make array Equal ***");
+        arOps.findMinimumOpsToEqualAnArray(minOpsArray);
 
     }
 
@@ -191,6 +201,31 @@ public class ArrayOperations {
         System.out.println("Largest : " + largest);
         System.out.println("Smallest : " + smallest);
     }
+
+
+
+    private void findSecondLargestNumber(int[] unSortedArray) {
+        if(unSortedArray.length < 2) {
+            System.out.println("No Second largest number..");
+            return;
+        }
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+
+        for(int i = 0; i<unSortedArray.length; i++) {
+            if(unSortedArray[i] > largest) {
+                secondLargest = largest;
+                largest = unSortedArray[i];
+            }
+            if(unSortedArray[i] > secondLargest && unSortedArray[i] != largest) {
+                secondLargest = unSortedArray[i];
+            }
+        }
+
+        System.out.println("Largest : " + largest);
+        System.out.println("Second Largest : " + secondLargest);
+    }
+
     private void findMaximumOccurredInteger(int n, int[] l, int[] r) {
 
         int MAX = 35;
@@ -264,5 +299,21 @@ public class ArrayOperations {
             leftSum += equilInput[i];
         }
         return -1;
+    }
+
+    private void findMinimumOpsToEqualAnArray(int[] minOpsArray) {
+
+        int sumOfArray = 0;
+        int smallest = minOpsArray[0];
+        for(int i = 0; i < minOpsArray.length; i++) {
+            if(minOpsArray[i] < smallest) {
+                smallest = minOpsArray[i];
+            }
+            sumOfArray += minOpsArray[i];
+        }
+
+        int minOps = sumOfArray - (minOpsArray.length * smallest); // minOps = sum  - (n * smallest(arr));x
+
+        System.out.println("Minimum number of operations needed to make array equal : " + minOps);
     }
 }
