@@ -1,5 +1,7 @@
 package com.vg;
 
+import com.vg.DSImplementation.MyArrayList;
+import com.vg.DSImplementation.MyHashMap;
 import com.vg.Tree.BinaryTreeImplementation;
 import com.vg.inheritance.Circle;
 import com.vg.inheritance.Shape;
@@ -8,6 +10,7 @@ import com.vg.model.TreeNode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.LongUnaryOperator;
 
 public class Main {
 
@@ -56,6 +59,37 @@ public class Main {
         System.out.println("*** Post order traversal Left, Right, Node ***");
         bts.postOrderTraversal();
 //        bts.postOrderTraversal(bts.getRoot());
+
+        MyArrayList<Integer> myArrayList = new MyArrayList<>(10);
+        myArrayList.add(1);
+        myArrayList.add(2);
+        myArrayList.add(3);
+        myArrayList.add(4);
+        myArrayList.add(5);
+        myArrayList.add(6);
+        myArrayList.add(7);
+//        myArrayList.add(8);
+//        myArrayList.add(9);
+//        myArrayList.add(10);
+//        myArrayList.add(11);
+        System.out.println("Size : " + myArrayList.size());
+        System.out.println("My Array List elements : ");
+        for(int i = 0; i< myArrayList.size(); i++) {
+            System.out.println(myArrayList.get(i));
+        }
+
+        MyHashMap<Integer,String> myHashMap = new MyHashMap<>();
+        myHashMap.put(1, "One");
+        myHashMap.put(2, "Two");
+
+        List<Integer> keys = myHashMap.getKeys();
+        keys.forEach(System.out::println);
+
+        List<String> values = myHashMap.getValues();
+        values.forEach(System.out::println);
+
+
+
 
     }
 }

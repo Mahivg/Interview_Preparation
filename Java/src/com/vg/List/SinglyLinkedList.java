@@ -72,13 +72,15 @@ public class SinglyLinkedList {
         Node mid = head;
         Node current = head;
         int count = 0;
-
         while(current != null) {
             count++;
             if(count % 2 == 0) {
                 mid = mid.next;
             }
             current = current.next;
+//            without using count we can get it like this
+//            mid = mid.next;
+//            current = current.next.next;
         }
         return mid;
     }

@@ -15,6 +15,7 @@ public class ListOperations {
         List<Integer> listOne = Arrays.asList(firstArray);
         List<Integer> listTwo = Arrays.asList(secondArray);
         List<Integer> mergedList = listOps.mergeList(listOne, listTwo);
+        ArrayList<Integer> e = new ArrayList<>();
         mergedList.stream().forEach(System.out::print);
 
         System.out.println("** Java 8 stream operations **");
@@ -51,8 +52,10 @@ public class ListOperations {
 //        Sorting using ID
         Collections.sort(employeeList, (e1, e2) -> e1.getEmpId().compareTo(e1.getEmpId()));
 
-//        Find employee salary greaterthan 25000
+//        Remove duplicate from arraylist
+        List<Employee> withoutDuplicates = employeeList.stream().distinct().collect(Collectors.toList());
 
+//        Find employee salary greater than 25000
         employeeList.stream().filter(emp -> emp.getSalary() > 25000.00).map(Employee::getName).forEach(System.out::println);
 
 //        Group employee whose name starts with M

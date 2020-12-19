@@ -1,6 +1,7 @@
 package com.vg.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Employee {
     private Integer empId;
@@ -69,5 +70,22 @@ public class Employee {
                 ", designation='" + designation + '\'' +
                 ", location='" + location + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return empId.equals(employee.empId) &&
+                Objects.equals(name, employee.name) &&
+                Objects.equals(salary, employee.salary) &&
+                Objects.equals(designation, employee.designation) &&
+                Objects.equals(location, employee.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(empId, name, salary, designation, location);
     }
 }

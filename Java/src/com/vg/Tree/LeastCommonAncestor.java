@@ -32,7 +32,7 @@ public class LeastCommonAncestor {
 
         TreeNode<Integer> parent = findLeastCommonAncestor(bst.getRoot(), nodeValue1, nodeValue2);
 
-        System.out.println("Least Common Anchestor : " + parent.getData());
+        System.out.println("Least Common Ancestor : " + parent.getData());
     }
 
     private static TreeNode<Integer> findLeastCommonAncestor(TreeNode<Integer> root, int nodeValue1, int nodeValue2) {
